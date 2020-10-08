@@ -32,6 +32,10 @@ class TodoTxtItem(object):
     def init_from_text(self, item_text):
         item_text = item_text.strip()
 
+        # discard lines beginning with '-' or '#'
+        if item_text[0] == '-' or item_text[0] == '#':
+            return False;
+
         # First get completion:
         if item_text[:2] == 'x ':
             self.is_completed = True
@@ -49,6 +53,7 @@ class TodoTxtItem(object):
             self.priority = None
 
         self.text = item_text
+        return True
 
     def has_priority(self):
         """This is useful when sorting list items."""

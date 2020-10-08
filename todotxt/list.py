@@ -66,8 +66,8 @@ class TodoTxtList(object):
         list of those objects."""
         if item_text.strip():
             new_list_item = TodoTxtItem()
-            new_list_item.init_from_text(item_text)
-            self.items.append(new_list_item)
+            if new_list_item.init_from_text(item_text):
+                self.items.append(new_list_item)
 
     def num_items(self):
         return len(self.items)
